@@ -1,0 +1,61 @@
+<section class="cart py-16">
+  <% if(session.cart) { %>
+    <div class="order container mx-auto">
+      <div class="order container mx-auto w-1/2">
+        <div class="flex items-center border-b border-gray-300 pb-4">
+          <img src="/img/fsatcart.png" alt="image is not loading" height="40px" width="40px" />
+          <h1 class="font-bold ml-4 text-2xl">Oder Summary</h1>
+        </div>
+        <!--                -->
+        <div class="pizza-list">
+          <% for(let zip of Object.values(session.cart.items)) { %>
+            <div class="flex items-center">
+              <img class="w-24" src="/img/<%= zip.items.image %>" alt="image is not loading " />
+              <div class="ml-4 flex-1">
+                <h1>Basmasti</h1>
+                <span> high quality</span>
+              </div>
+              <span class="flex-1">Qty <%= zip.qty %></span>
+              <span class="font-bold text-lg">&#x20B9;<%= zip.items.price*zip.qty %></span>
+            </div>
+            <% } %>
+        </div>
+        <hr />
+        <!--         -->
+        <div class="text-right py-4">
+          <div>
+            <span class="text-lg font-bold">Total amount</span>
+            <span class="amount text-2xl font-bold">&#x20B9;<%= session.cart.totalprice %></span>
+          </div>
+          <% if(user) { %>
+            <div>
+              <form action="/order" method="POST" class="mt-12">
+                <input name="phone" class="border border-gray-400 p-2 w-1/2" type="text" placeholder="phone number" />
+                <input name="address" class="border border-gray-400 p-2 w-1/2 mt-4" type="text" placeholder="address" />
+                <div>
+                  <button class="btn-primary px-6 py-2 rounded-full text-white font-bold mt-6" type="submit">Order
+                    now</button>
+                </div>
+              </form>
+            </div>
+            <% } else { %>
+              <div><a href="/login"
+                  class="inline-block cursor-pointer px-6 btn-primary py-2 rounded-full text-white font-bold mt-6">Login
+                  to continue</a></div>
+              <% } %>
+        </div>
+      </div>
+    </div>
+    <% } else { %>
+      <div class="empyty-cart py-16">
+        <div class="container mx-auto text-center">
+          <h1 class="text-3xl font-bold mb-2">cart Empty</h1>
+          <p class="text-gary-500 text-lg mb-12">
+            your probably haven't orderded a any product to order product go to main
+            page
+          </p>
+          <a href="/" class="inline-block px-6 py-2 rounded-full btn-primary font-bold mt-12">Go back</a>
+        </div>
+      </div>
+      <% } %>
+</section>

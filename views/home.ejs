@@ -1,0 +1,41 @@
+<!-- second section is here -->
+<section class="hero ">
+  <div class="container flex items-center mx-auto justify-between py-4">
+    <div class="w-1/2 px-20" data-aos="fade-up" data-aos-duration="2000">
+      <h6 class="text-lg"><em>Are you hungry </em></h6>
+      <h1 class="text-6xl font-bold">Don't wait</h1>
+      <button class="btn-primary px-6 py-2 rounded-full text-white font-bold mt-4">
+        Order now
+      </button>
+    </div>
+
+    <div class="w-1/2">
+      <img class="" src="/img/cart.png" alt="image is loading" height="400" width="400"/>
+    </div>
+  </div>
+  <!-- section 1 -->
+</section>
+<section class="menu container mx-auto py-8">
+  <h1 class="text-xl font-bold mb-8">All products</h1>
+
+  <div class="grid grid-cols-4 gap-x-8 gap-y-4">
+    <% zips.forEach(function(zip){ %>
+      <div class="w-64 md-10">
+        <img class="h-40 mb-4 mx-auto" src="/img/<%=zip.image%>" alt="" />
+        <div class="text-center">
+          <h2 class="mb-4 text-lg">
+            <%=zip.name%>
+          </h2>
+          <span class="size py-1 px-4 rounded-full uppercase text-xs">1 kilo</span>
+          <div class="flex items-center justify-around mt-6">
+            <span class="font-bold"> &#x20B9;<%=zip.price%></span>
+            <button data-zip="<%=JSON.stringify(zip)%>" class="add-to-cart py-1 px-6 rounded-full flex items-center font-bold">
+              <span>+</span>
+              <span class="ml-4">Add</span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <% }) %>
+  </div>
+</section>

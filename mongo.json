@@ -1,0 +1,30 @@
+"for start mongo db you need two power shell" 
+1. mongo db
+2.mongo "we will work in mongo"
+
+if you want to work in data base run this command " use zip"
+for show data base command" show dbs "
+how to insert data command" db.text.insert({"name":"basmaati rice"}) "
+if you want to see data base collection" show collections  "
+if you want to add insert  object  " db.insert.insertOne({"name":"basmati rice","image":"sugar.png","rating":"4.5","sold":"100"})   "
+if you want to add insert multiplae  object" db.items.insertMany([{"name":"basmati rice","image":"sugar.png","rating":"4.4","sold":"100"},{"name":"basmati rice","image":"sugar.png","rating":"3.5","sold":"50"}]) "
+how to find items in data base "  db.items.find()  "
+how to find by using filter" db.items.find({rating:4.5}) "
+
+// searching data in mongo db:
+how to find by using filter by grater or equal something" db.items.find(rating:{$gte:4.5}) "
+how to find by using filter by grater than something" db.items.find(rating:{$gt:4.5}) "
+how to find by using filter by less than something" db.items.find(rating:{$gt:4.5}) "
+// and operrations
+how to find by using filter by grater than something and grater than something" db.items.find(rating:{$gt:4.5},price:{$gt:2000}) "
+how to find by using filter by less than something and grater than something" db.items.find(rating:{$lt:4.5},price:{$gt:2000}) "
+// or operations
+how to find by using filter by less than something or grater than something" db.items.find($or:[{rating:{$lt:4.5}},{price:{$gt:2000}}]) "
+
+// delete operation:
+how to delete one items"  db.items.deleteOne({price:100})     "
+how to delete many items"  db.items.deleteMany({price:100})   "
+
+// update operation:
+how to update to one item indata base" db.items.updateOne({name:basmati rice},{$set:{price:2}) "
+how to update to many items  data base" db.items.updateMany({name:basmati rice},{$set:{price:2}) "
