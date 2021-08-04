@@ -1,1 +1,1 @@
-app.use(express.json());
+/all/items

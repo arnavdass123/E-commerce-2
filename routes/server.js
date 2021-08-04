@@ -11,15 +11,14 @@ const session = require("express-session");
 const flash = require("express-flash");
 const Mongodbstore = require("connect-mongo")(session);
 const passport = require("passport");
-
-
+const items = require("../app/models/menu");
 // database connection:
 const url = "mongodb://localhost/zip";
 mongoose.connect(url, {
   useNewUrlParser: true,
   useCreateIndex: true,
   useUnifiedTopology: true,
-  useFindAndModify: true
+  useFindAndModify: true,
 });
 
 // information about connection:
@@ -45,7 +44,7 @@ app.use(
     resave: false,
     saveUninitialized: false,
     store: mongostore,
-    cookie: { maxAge: 1000 * 60 * 60 * 24 }
+    cookie: { maxAge: 1000 * 60 * 60 * 24 },
   })
 );
 
@@ -74,6 +73,11 @@ app.use(expresslayout);
 // app.set('views', './views/home.ejs')
 app.set("view engine", "ejs");
 app.set("/views", path.join(__dirname, "veiws")); // connect with file
+
+app.get("/allll/items", async (req, res) => {
+  const zips = await items.find();
+  res.send(zips);
+});
 
 // rendering page:
 require("./routes")(app);
