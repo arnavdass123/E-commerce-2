@@ -23,6 +23,7 @@
   },
   "scripts": {
     "dev": "npm run development",
+    "start": "nodemon routes/server.js",
     "compile": "node_modules/.bin/webpack --config=node_modules/laravel-mix/setup/webpack.config.js",
     "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "watch": "npm run development -- --watch",
