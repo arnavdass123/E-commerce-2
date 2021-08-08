@@ -12,6 +12,7 @@ const flash = require("express-flash");
 const Mongodbstore = require("connect-mongo")(session);
 const passport = require("passport");
 const items = require("../app/models/menu");
+const upload = require("express-fileupload");
 // database connection:
 const url = "mongodb://localhost/zip";
 mongoose.connect(url, {
@@ -47,6 +48,10 @@ app.use(
     cookie: { maxAge: 1000 * 60 * 60 * 24 },
   })
 );
+
+// using for uploading image data in this :
+app.use(upload());
+
 
 // passport confing:
 const passportInit = require("../app/config/passport");
